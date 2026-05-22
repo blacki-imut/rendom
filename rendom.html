@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>RENDOM — Premium AI Script Generator Platform 2026</title>
+<meta name="description" content="RENDOM adalah platform AI premium futuristik untuk generate script otomatis, fast, secure, dan modern. Dibuat untuk creator masa depan." />
+<meta name="keywords" content="RENDOM, AI Script Generator, premium dark UI, futuristic website, neon UI, cyber modern, script tools, blacki" />
+<meta name="author" content="RENDOM" />
+<meta name="theme-color" content="#050505" />
+<meta name="robots" content="index, follow" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="RENDOM — Premium AI Script Generator Platform" />
+<meta property="og:description" content="Dark futuristic AI platform. Neon premium, ultra fast, secure, ready for 2026." />
+<meta property="og:site_name" content="RENDOM" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="RENDOM — Premium AI Platform" />
+<meta name="twitter:description" content="Generate, automate, dominate. Dark neon premium platform 2026." />
+
+<!-- Favicon SVG -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%2300d9ff'/><stop offset='1' stop-color='%230066ff'/></linearGradient></defs><rect width='64' height='64' rx='16' fill='url(%23g)'/><text x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Poppins,Arial' font-weight='800' font-size='38' fill='%23050505'>R</text></svg>" />
+
+<!-- Fonts & Icons -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+
+<style>
+/* ============ RESET ============ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:'Poppins',system-ui,sans-serif;
+  background:#050505;
+  color:#e8f6ff;
+  overflow-x:hidden;
+  line-height:1.6;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;border:none;background:none;cursor:pointer;color:inherit}
+img,svg{max-width:100%;display:block}
+
+/* ============ VARS ============ */
+:root{
+  --cyan:#00d9ff;
+  --mint:#00ffb3;
+  --blue:#0066ff;
+  --bg-0:#050505;
+  --bg-1:#0a0a0a;
+  --bg-2:#101010;
+  --bg-3:#161616;
+  --line:rgba(0,217,255,.18);
+  --line-soft:rgba(255,255,255,.06);
+  --text:#e8f6ff;
+  --muted:#8aa1b0;
+  --grad:linear-gradient(135deg,#00d9ff 0%,#0066ff 100%);
+  --grad-mint:linear-gradient(135deg,#00ffb3 0%,#00d9ff 100%);
+  --glow:0 0 24px rgba(0,217,255,.45),0 0 60px rgba(0,102,255,.25);
+  --glow-soft:0 8px 32px rgba(0,217,255,.15);
+}
+
+/* ============ SCROLLBAR ============ */
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:#070707}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#00d9ff,#0066ff);border-radius:10px;border:2px solid #070707}
+::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,#00ffb3,#00d9ff)}
+
+::selection{background:rgba(0,217,255,.35);color:#fff}
+
+/* ============ LOADING SCREEN ============ */
+.loader{
+  position:fixed;inset:0;z-index:9999;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px;
+  background:radial-gradient(ellipse at center,#0a0a0a 0%,#050505 70%);
+  transition:opacity .8s ease,visibility .8s ease;
+}
+.loader.hide{opacity:0;visibility:hidden}
+.loader .logo-mark{animation:pulse 1.8s ease-in-out infinite}
+.loader-bar{
+  width:160px;height:3px;border-radius:99px;background:rgba(255,255,255,.06);overflow:hidden;position:relative;
+}
+.loader-bar::after{
+  content:"";position:absolute;inset:0;width:40%;
+  background:var(--grad);border-radius:99px;
+  animation:loadbar 1.2s ease-in-out infinite;
+  box-shadow:0 0 12px var(--cyan);
+}
+@keyframes loadbar{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
+.loader-text{font-size:12px;color:var(--muted);letter-spacing:.3em;text-transform:uppercase}
+
+/* ============ AMBIENT BG ============ */
+.ambient{position:fixed;inset:0;z-index:-2;pointer-events:none;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.5;animation:float 14s ease-in-out infinite}
+.orb.o1{width:480px;height:480px;background:#00d9ff;top:-120px;left:-120px;opacity:.25}
+.orb.o2{width:520px;height:520px;background:#0066ff;bottom:-180px;right:-180px;opacity:.28;animation-delay:-4s}
+.orb.o3{width:320px;height:320px;background:#00ffb3;top:40%;left:50%;opacity:.15;animation-delay:-8s}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-30px) scale(1.1)}}
+.grid-bg{
+  position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(0,217,255,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,217,255,.04) 1px,transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%);
+}
+#particles{position:fixed;inset:0;z-index:-1;pointer-events:none}
+
+/* ============ LOGO ============ */
+.logo{display:inline-flex;align-items:center;gap:10px}
+.logo-mark{
+  width:38px;height:38px;border-radius:11px;
+  background:var(--grad);
+  display:grid;place-items:center;
+  color:#050505;font-weight:800;font-size:20px;
+  box-shadow:0 0 16px rgba(0,217,255,.55),inset 0 0 12px rgba(255,255,255,.25);
+  position:relative;
+}
+.logo-mark::before{
+  content:"";position:absolute;inset:-3px;border-radius:14px;
+  background:var(--grad);filter:blur(10px);opacity:.55;z-index:-1;
+  animation:pulse 2.6s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:.45;transform:scale(1)}50%{opacity:.85;transform:scale(1.06)}}
+.logo-text{font-weight:800;font-size:20px;letter-spacing:.18em;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+
+/* ============ NAVBAR ============ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:14px 0;
+  transition:all .35s ease;
+}
+.nav.scrolled{
+  background:rgba(8,8,8,.7);
+  backdrop-filter:blur(18px) saturate(160%);
+  -webkit-backdrop-filter:blur(18px) saturate(160%);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:1240px;margin:0 auto;padding:0 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{font-size:14px;color:var(--muted);font-weight:500;transition:color .25s;position:relative}
+.nav-links a:hover{color:#fff}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--grad);transition:width .3s;border-radius:2px}
+.nav-links a:hover::after{width:100%}
+.nav-cta{display:flex;gap:10px;align-items:center}
+.nav-burger{display:none;width:42px;height:42px;border-radius:11px;background:rgba(255,255,255,.04);border:1px solid var(--line-soft);align-items:center;justify-content:center}
+.nav-burger .material-symbols-rounded{color:#fff}
+
+.mobile-menu{
+  position:fixed;top:70px;left:12px;right:12px;z-index:99;
+  background:rgba(10,10,10,.92);backdrop-filter:blur(20px);
+  border:1px solid var(--line);border-radius:18px;padding:18px;
+  display:none;flex-direction:column;gap:6px;
+  box-shadow:0 20px 60px rgba(0,0,0,.6),var(--glow-soft);
+}
+.mobile-menu.open{display:flex;animation:fadeIn .25s ease}
+.mobile-menu a{padding:12px 14px;border-radius:11px;color:var(--text);font-weight:500;font-size:15px;transition:background .2s}
+.mobile-menu a:hover{background:rgba(0,217,255,.08)}
+
+/* ============ BUTTONS ============ */
+.btn{
+  position:relative;display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:12px 22px;border-radius:12px;
+  font-weight:600;font-size:14px;letter-spacing:.02em;
+  transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s,filter .25s;
+  overflow:hidden;cursor:pointer;white-space:nowrap;
+  -webkit-tap-highlight-color:transparent;
+}
+.btn .material-symbols-rounded{font-size:18px}
+.btn-primary{
+  background:var(--grad);color:#050505;
+  box-shadow:0 8px 24px rgba(0,217,255,.35),inset 0 0 0 1px rgba(255,255,255,.2);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,217,255,.55),inset 0 0 0 1px rgba(255,255,255,.3);filter:brightness(1.1)}
+.btn-ghost{
+  background:rgba(255,255,255,.04);color:#fff;
+  border:1px solid var(--line);backdrop-filter:blur(10px);
+}
+.btn-ghost:hover{background:rgba(0,217,255,.1);border-color:var(--cyan);transform:translateY(-2px);box-shadow:var(--glow-soft)}
+.btn-sm{padding:9px 16px;font-size:13px;border-radius:10px}
+.ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.4);pointer-events:none;transform:scale(0);animation:ripple .65s ease-out}
+@keyframes ripple{to{transform:scale(4);opacity:0}}
+
+/* ============ LAYOUT ============ */
+.container{max-width:1240px;margin:0 auto;padding:0 24px}
+section{padding:100px 0;position:relative}
+.section-head{text-align:center;max-width:720px;margin:0 auto 64px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 14px;border-radius:99px;
+  background:rgba(0,217,255,.08);border:1px solid var(--line);
+  color:var(--cyan);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  margin-bottom:18px;
+}
+.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--mint);box-shadow:0 0 10px var(--mint);animation:pulse 1.6s infinite}
+h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.1}
+h1{font-size:clamp(38px,6.5vw,76px)}
+h2{font-size:clamp(28px,4.2vw,46px)}
+h3{font-size:clamp(18px,2.2vw,22px)}
+.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--muted);font-size:clamp(15px,1.6vw,17px);margin-top:16px}
+
+/* ============ HERO ============ */
+.hero{
+  padding:140px 0 80px;
+  min-height:100vh;
+  display:flex;align-items:center;
+  position:relative;
+}
+.hero-inner{display:grid;gap:48px;align-items:center;grid-template-columns:1.1fr .9fr}
+.hero h1 span{display:block}
+.hero-cta{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.hero-stats{display:flex;gap:28px;margin-top:36px;flex-wrap:wrap}
+.hero-stat .n{font-size:26px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-stat .l{font-size:12px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+
+/* Hero cinematic visual 16:9 */
+.cinematic{
+  position:relative;aspect-ratio:16/9;border-radius:24px;overflow:hidden;
+  background:linear-gradient(135deg,#0a0a0a,#101010);
+  border:1px solid var(--line);
+  box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 60px rgba(0,217,255,.2);
+}
+.cinematic::before{
+  content:"";position:absolute;inset:-2px;border-radius:26px;
+  background:conic-gradient(from 0deg,transparent,var(--cyan),transparent 30%,var(--blue),transparent 60%,var(--mint),transparent);
+  animation:spin 8s linear infinite;z-index:-1;
+}
+.cinematic::after{
+  content:"";position:absolute;inset:1px;border-radius:23px;background:#0a0a0a;z-index:0;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.cinematic > *{position:relative;z-index:1}
+.cine-overlay{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 20% 20%,rgba(0,217,255,.25),transparent 40%),
+    radial-gradient(circle at 80% 80%,rgba(0,255,179,.18),transparent 40%);
+}
+.cine-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(0,217,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(0,217,255,.12) 1px,transparent 1px);
+  background-size:40px 40px;
+  mask-image:radial-gradient(ellipse at center,#000,transparent 80%);
+  -webkit-mask-image:radial-gradient(ellipse at center,#000,transparent 80%);
+}
+.cine-center{
+  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+}
+.cine-ring{
+  width:120px;height:120px;border-radius:50%;
+  border:2px solid rgba(0,217,255,.35);
+  display:grid;place-items:center;position:relative;
+  animation:pulse 2.4s ease-in-out infinite;
+}
+.cine-ring::before,.cine-ring::after{
+  content:"";position:absolute;inset:-12px;border-radius:50%;
+  border:1px solid rgba(0,217,255,.2);
+}
+.cine-ring::after{inset:-26px;border-color:rgba(0,217,255,.1)}
+.cine-ring .material-symbols-rounded{font-size:54px;color:var(--cyan);filter:drop-shadow(0 0 12px var(--cyan))}
+.cine-label{font-size:11px;color:var(--muted);letter-spacing:.4em;text-transform:uppercase}
+.cine-chip{
+  position:absolute;padding:8px 12px;border-radius:11px;
+  background:rgba(10,10,10,.7);backdrop-filter:blur(12px);
+  border:1px solid var(--line);font-size:11px;color:#cfe9ff;font-weight:600;
+  display:flex;align-items:center;gap:6px;
+  box-shadow:var(--glow-soft);
+}
+.cine-chip .material-symbols-rounded{font-size:14px;color:var(--mint)}
+.cc-1{top:12%;left:8%;animation:float 5s ease-in-out infinite}
+.cc-2{top:18%;right:8%;animation:float 6s ease-in-out infinite -2s}
+.cc-3{bottom:14%;left:10%;animation:float 5.5s ease-in-out infinite -3s}
+.cc-4{bottom:18%;right:10%;animation:float 6.2s ease-in-out infinite -1s}
+
+/* ============ AUTO-OPEN ============ */
+.auto-open{
+  max-width:780px;margin:0 auto;
+  padding:32px;border-radius:24px;
+  background:linear-gradient(135deg,rgba(0,217,255,.05),rgba(0,102,255,.05));
+  border:1px solid var(--line);
+  backdrop-filter:blur(20px);
+  position:relative;overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,.4),var(--glow-soft);
+}
+.auto-open::before{
+  content:"";position:absolute;inset:-1px;border-radius:24px;padding:1px;
+  background:conic-gradient(from 0deg,var(--cyan),var(--blue),var(--mint),var(--cyan));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  opacity:.5;animation:spin 8s linear infinite;
+}
+.ao-top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+.ao-title{display:flex;align-items:center;gap:14px}
+.ao-icon{
+  width:48px;height:48px;border-radius:13px;background:var(--grad);
+  display:grid;place-items:center;color:#050505;
+  box-shadow:0 0 18px rgba(0,217,255,.4);
+}
+.ao-title h3{font-size:18px}
+.ao-title p{font-size:12px;color:var(--muted)}
+
+/* Toggle Switch */
+.switch{position:relative;display:inline-block;width:64px;height:34px}
+.switch input{opacity:0;width:0;height:0}
+.slider{
+  position:absolute;cursor:pointer;inset:0;border-radius:99px;
+  background:rgba(255,255,255,.08);border:1px solid var(--line-soft);
+  transition:.35s;
+}
+.slider::before{
+  content:"";position:absolute;width:26px;height:26px;left:3px;top:3px;border-radius:50%;
+  background:#fff;transition:.35s cubic-bezier(.34,1.56,.64,1);
+  box-shadow:0 2px 6px rgba(0,0,0,.4);
+}
+.switch input:checked + .slider{background:var(--grad);box-shadow:0 0 18px rgba(0,217,255,.55)}
+.switch input:checked + .slider::before{transform:translateX(30px);background:#050505}
+
+.ao-status{
+  padding:14px 18px;border-radius:14px;
+  background:rgba(255,255,255,.03);border:1px solid var(--line-soft);
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:space-between;
+}
+.ao-status-l{display:flex;align-items:center;gap:10px}
+.status-dot{width:10px;height:10px;border-radius:50%;background:#ff5577;box-shadow:0 0 10px #ff5577;transition:.3s}
+.status-dot.on{background:var(--mint);box-shadow:0 0 10px var(--mint);animation:pulse 1.4s infinite}
+.status-text{font-size:13px;color:var(--muted);font-weight:500}
+.countdown{
+  font-family:'Poppins',monospace;font-weight:700;font-size:18px;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+  letter-spacing:.05em;min-width:50px;text-align:right;
+}
+.ao-progress{height:4px;border-radius:99px;background:rgba(255,255,255,.06);margin-top:14px;overflow:hidden}
+.ao-progress-bar{height:100%;width:0;background:var(--grad);border-radius:99px;transition:width 1s linear;box-shadow:0 0 10px var(--cyan)}
+.ao-url{margin-top:14px;font-size:12px;color:var(--muted);word-break:break-all}
+.ao-url span{color:var(--cyan)}
+
+/* ============ CARDS ============ */
+.grid{display:grid;gap:22px}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+
+.card{
+  position:relative;padding:28px;border-radius:20px;
+  background:linear-gradient(180deg,rgba(20,20,20,.6),rgba(10,10,10,.6));
+  border:1px solid var(--line-soft);backdrop-filter:blur(12px);
+  transition:transform .35s cubic-bezier(.34,1.56,.64,1),border-color .3s,box-shadow .3s;
+  overflow:hidden;
+}
+.card::before{
+  content:"";position:absolute;inset:0;border-radius:20px;padding:1px;
+  background:linear-gradient(135deg,rgba(0,217,255,.4),transparent 40%,transparent 60%,rgba(0,102,255,.3));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  opacity:0;transition:opacity .3s;pointer-events:none;
+}
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 50px rgba(0,0,0,.5),0 0 30px rgba(0,217,255,.18)}
+.card:hover::before{opacity:1}
+.card-icon{
+  width:48px;height:48px;border-radius:13px;
+  background:rgba(0,217,255,.1);border:1px solid var(--line);
+  display:grid;place-items:center;color:var(--cyan);
+  margin-bottom:18px;transition:.3s;
+}
+.card-icon .material-symbols-rounded{font-size:24px;filter:drop-shadow(0 0 8px var(--cyan))}
+.card:hover .card-icon{background:var(--grad);color:#050505;transform:scale(1.05)}
+.card:hover .card-icon .material-symbols-rounded{filter:none}
+.card h3{margin-bottom:10px;font-size:17px}
+.card p{color:var(--muted);font-size:14px}
+
+/* ============ DASHBOARD PREVIEW ============ */
+.dash{
+  position:relative;padding:0;border-radius:24px;overflow:hidden;
+  background:linear-gradient(135deg,#0a0a0a,#101010);
+  border:1px solid var(--line);
+  box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 60px rgba(0,217,255,.18);
+}
+.dash-bar{display:flex;align-items:center;gap:8px;padding:14px 18px;border-bottom:1px solid var(--line-soft);background:rgba(0,0,0,.4)}
+.dash-bar .dot{width:11px;height:11px;border-radius:50%}
+.dash-bar .dot.r{background:#ff5f57}.dash-bar .dot.y{background:#febc2e}.dash-bar .dot.g{background:#28c840}
+.dash-bar .addr{margin-left:14px;font-size:12px;color:var(--muted);font-family:monospace}
+.dash-body{padding:24px;display:grid;gap:20px;grid-template-columns:repeat(4,1fr)}
+.dash-metric{padding:18px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid var(--line-soft)}
+.dash-metric .l{font-size:11px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+.dash-metric .v{font-size:24px;font-weight:800;margin-top:6px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.dash-metric .d{font-size:11px;color:var(--mint);margin-top:4px}
+.dash-chart{grid-column:1/-1;padding:18px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid var(--line-soft);min-height:200px;position:relative}
+.dash-chart .ch-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.dash-chart .ch-head .t{font-size:13px;font-weight:600}
+.dash-chart .ch-head .legend{display:flex;gap:12px;font-size:11px;color:var(--muted)}
+.dash-chart .ch-head .legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:middle}
+
+/* ============ STATS ============ */
+.stats-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.stat-card{
+  padding:26px 22px;border-radius:18px;text-align:center;
+  background:linear-gradient(180deg,rgba(0,217,255,.04),transparent);
+  border:1px solid var(--line);
+  position:relative;overflow:hidden;
+}
+.stat-card .material-symbols-rounded{font-size:28px;color:var(--cyan);filter:drop-shadow(0 0 10px var(--cyan));margin-bottom:8px}
+.stat-card .n{font-size:32px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat-card .l{font-size:12px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-top:4px}
+
+/* ============ MOBILE SHOWCASE ============ */
+.show-wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.phone{
+  width:280px;aspect-ratio:9/19;border-radius:38px;margin:0 auto;
+  background:linear-gradient(180deg,#0a0a0a,#101010);
+  border:6px solid #1a1a1a;
+  box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 50px rgba(0,217,255,.25),inset 0 0 0 1px rgba(0,217,255,.2);
+  position:relative;overflow:hidden;
+}
+.phone::before{
+  content:"";position:absolute;top:10px;left:50%;transform:translateX(-50%);
+  width:90px;height:22px;background:#000;border-radius:99px;z-index:5;
+}
+.phone-screen{position:absolute;inset:0;padding:38px 14px 14px;display:flex;flex-direction:column;gap:10px}
+.ps-head{font-size:11px;color:var(--cyan);letter-spacing:.2em;text-align:center}
+.ps-card{padding:10px;border-radius:12px;background:rgba(0,217,255,.06);border:1px solid var(--line-soft);font-size:11px;color:#cfe9ff}
+.ps-card .l{color:var(--muted);font-size:9px;letter-spacing:.1em;text-transform:uppercase}
+.ps-card .v{font-weight:700;margin-top:2px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ps-btn{margin-top:auto;padding:10px;border-radius:11px;background:var(--grad);color:#050505;font-size:11px;font-weight:700;text-align:center}
+
+/* ============ TESTIMONIALS ============ */
+.t-card{padding:24px;border-radius:18px;background:rgba(15,15,15,.6);border:1px solid var(--line-soft);transition:.3s;position:relative}
+.t-card:hover{border-color:var(--cyan);box-shadow:var(--glow-soft);transform:translateY(-4px)}
+.t-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.t-avatar{
+  width:44px;height:44px;border-radius:50%;
+  background:var(--grad);display:grid;place-items:center;color:#050505;font-weight:800;
+  box-shadow:0 0 12px rgba(0,217,255,.4);font-size:16px;
+}
+.t-user .n{font-weight:600;font-size:14px}
+.t-user .u{font-size:12px;color:var(--muted)}
+.t-stars{display:flex;gap:2px;color:#febc2e;font-size:14px;margin-top:4px}
+.t-card p{font-size:14px;color:#cfe9ff}
+
+/* ============ FAQ ============ */
+.faq-list{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq-item{
+  border-radius:14px;background:rgba(15,15,15,.6);border:1px solid var(--line-soft);overflow:hidden;
+  transition:border-color .3s,box-shadow .3s;
+}
+.faq-item.open{border-color:var(--cyan);box-shadow:var(--glow-soft)}
+.faq-q{
+  width:100%;display:flex;justify-content:space-between;align-items:center;gap:14px;
+  padding:18px 22px;text-align:left;font-weight:600;font-size:15px;color:#fff;
+}
+.faq-q .material-symbols-rounded{transition:transform .35s;color:var(--cyan)}
+.faq-item.open .faq-q .material-symbols-rounded{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
+.faq-a div{padding:0 22px 18px;color:var(--muted);font-size:14px}
+.faq-item.open .faq-a{max-height:300px}
+
+/* ============ SOCIAL ============ */
+.socials{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:840px;margin:0 auto}
+.soc{
+  position:relative;display:flex;align-items:center;gap:14px;
+  padding:18px 22px;border-radius:16px;overflow:hidden;
+  background:linear-gradient(135deg,rgba(15,15,15,.8),rgba(10,10,10,.8));
+  border:1px solid var(--line);transition:.35s;
+  text-decoration:none;color:#fff;
+}
+.soc::before{content:"";position:absolute;inset:0;background:var(--grad);opacity:0;transition:.35s;z-index:0}
+.soc > *{position:relative;z-index:1}
+.soc:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,217,255,.3),var(--glow)}
+.soc:hover::before{opacity:.92}
+.soc:hover .soc-icon{background:rgba(0,0,0,.25);color:#fff}
+.soc:hover .l,.soc:hover .s{color:#050505}
+.soc-icon{
+  width:48px;height:48px;border-radius:13px;flex-shrink:0;
+  display:grid;place-items:center;color:var(--cyan);
+  background:rgba(0,217,255,.1);border:1px solid var(--line);transition:.35s;
+}
+.soc-icon .material-symbols-rounded{font-size:24px}
+.soc .l{font-weight:700;font-size:15px;transition:.35s}
+.soc .s{font-size:12px;color:var(--muted);transition:.35s}
+
+/* ============ FOOTER ============ */
+footer{padding:80px 0 40px;border-top:1px solid var(--line-soft);margin-top:60px;position:relative}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:50px}
+.foot-col h4{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#fff;margin-bottom:18px;font-weight:700}
+.foot-col a{display:block;color:var(--muted);font-size:14px;padding:6px 0;transition:color .2s}
+.foot-col a:hover{color:var(--cyan)}
+.foot-about p{color:var(--muted);font-size:14px;margin-top:16px;max-width:320px}
+.foot-bottom{padding-top:30px;border-top:1px solid var(--line-soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--muted)}
+
+/* ============ BACK TO TOP ============ */
+.totop{
+  position:fixed;right:20px;bottom:20px;z-index:90;
+  width:48px;height:48px;border-radius:14px;display:grid;place-items:center;
+  background:var(--grad);color:#050505;
+  box-shadow:0 10px 30px rgba(0,217,255,.45);
+  opacity:0;visibility:hidden;transform:translateY(20px);
+  transition:.35s;
+}
+.totop.show{opacity:1;visibility:visible;transform:translateY(0)}
+.totop:hover{transform:translateY(-4px) scale(1.05);filter:brightness(1.1)}
+
+/* ============ REVEAL ============ */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s cubic-bezier(.34,1.56,.64,1)}
+.reveal.in{opacity:1;transform:none}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:980px){
+  .hero-inner{grid-template-columns:1fr}
+  .show-wrap{grid-template-columns:1fr;text-align:center}
+  .grid-3,.grid-4{grid-template-columns:repeat(2,1fr)}
+  .dash-body{grid-template-columns:repeat(2,1fr)}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  .nav-burger{display:flex}
+  .socials{grid-template-columns:1fr}
+  section{padding:70px 0}
+}
+@media (max-width:560px){
+  .container{padding:0 18px}
+  .grid-3,.grid-4,.grid-2{grid-template-columns:1fr}
+  .dash-body{grid-template-columns:1fr 1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .hero{padding:120px 0 60px;min-height:auto}
+  .hero-cta{flex-direction:column;align-items:stretch}
+  .hero-cta .btn{justify-content:center}
+  .hero-stats{justify-content:space-around;gap:18px}
+  .auto-open{padding:22px}
+  .nav-cta .btn{display:none}
+  .cinematic{border-radius:18px}
+  .cine-chip{font-size:10px;padding:6px 9px}
+  body{padding-bottom:env(safe-area-inset-bottom)}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="logo-mark">R</div>
+  <div class="loader-bar"></div>
+  <div class="loader-text">Initializing Rendom</div>
+</div>
+
+<!-- AMBIENT -->
+<div class="ambient">
+  <div class="orb o1"></div>
+  <div class="orb o2"></div>
+  <div class="orb o3"></div>
+</div>
+<div class="grid-bg"></div>
+<canvas id="particles"></canvas>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <div class="logo-mark">R</div>
+      <div class="logo-text">RENDOM</div>
+    </a>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#stats">Stats</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#auto" class="btn btn-primary btn-sm">
+        <span class="material-symbols-rounded">bolt</span> Launch
+      </a>
+      <button class="nav-burger" id="burger" aria-label="Menu">
+        <span class="material-symbols-rounded" id="burgerIcon">menu</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#features">Features</a>
+  <a href="#dashboard">Dashboard</a>
+  <a href="#auto">Auto Open</a>
+  <a href="#stats">Stats</a>
+  <a href="#testimonials">Reviews</a>
+  <a href="#faq">FAQ</a>
+  <a href="#contact">Community</a>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="reveal">
+        <span class="eyebrow"><span class="dot"></span> Premium AI Platform · 2026</span>
+        <h1>
+          <span class="grad-text">Generate.</span>
+          <span>Automate.</span>
+          <span class="grad-text">Dominate.</span>
+        </h1>
+        <p class="lead">RENDOM adalah platform AI premium futuristik untuk creator modern. Generate script otomatis dengan kecepatan cahaya, keamanan enterprise, dan UI yang tidak akan kamu temukan di tempat lain.</p>
+        <div class="hero-cta">
+          <a href="#auto" class="btn btn-primary"><span class="material-symbols-rounded">rocket_launch</span> Mulai Sekarang</a>
+          <a href="#features" class="btn btn-ghost"><span class="material-symbols-rounded">play_circle</span> Lihat Demo</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><div class="n" data-count="120000" data-suffix="+">0</div><div class="l">Active Users</div></div>
+          <div class="hero-stat"><div class="n" data-count="99" data-suffix="%">0</div><div class="l">Uptime</div></div>
+          <div class="hero-stat"><div class="n" data-count="48" data-suffix="ms">0</div><div class="l">Avg Latency</div></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="cinematic">
+          <div class="cine-overlay"></div>
+          <div class="cine-grid"></div>
+          <div class="cine-chip cc-1"><span class="material-symbols-rounded">memory</span> AI Engine</div>
+          <div class="cine-chip cc-2"><span class="material-symbols-rounded">verified</span> Secure</div>
+          <div class="cine-chip cc-3"><span class="material-symbols-rounded">speed</span> Ultra Fast</div>
+          <div class="cine-chip cc-4"><span class="material-symbols-rounded">auto_awesome</span> Premium</div>
+          <div class="cine-center">
+            <div class="cine-ring"><span class="material-symbols-rounded">smart_toy</span></div>
+            <div class="cine-label">Rendom Neural Core</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- AUTO-OPEN SYSTEM -->
+<section id="auto">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span> Auto Open System</span>
+      <h2>Akses <span class="grad-text">Script Generator</span> Otomatis</h2>
+      <p class="lead">Aktifkan toggle dan kami akan membuka generator script otomatis dalam 8 detik. Matikan kapan saja untuk membatalkan.</p>
+    </div>
+    <div class="auto-open reveal">
+      <div class="ao-top">
+        <div class="ao-title">
+          <div class="ao-icon"><span class="material-symbols-rounded">auto_mode</span></div>
+          <div>
+            <h3>Auto Redirect</h3>
+            <p>Redirect otomatis ke Script Generator</p>
+          </div>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="autoToggle">
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="ao-status">
+        <div class="ao-status-l">
+          <span class="status-dot" id="statusDot"></span>
+          <span class="status-text" id="statusText">Status: Nonaktif</span>
+        </div>
+        <div class="countdown" id="countdown">--</div>
+      </div>
+      <div class="ao-progress"><div class="ao-progress-bar" id="aoBar"></div></div>
+      <div class="ao-url">Target: <span>https://script-gemerator.netlify.app</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span> Premium Features</span>
+      <h2>Dibangun untuk <span class="grad-text">Masa Depan</span></h2>
+      <p class="lead">Fitur premium yang menggabungkan kecepatan, keamanan, dan desain modern dalam satu platform.</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="card reveal"><div class="card-icon"><span class="material-symbols-rounded">bolt</span></div><h3>Lightning Speed</h3><p>Generate script dalam hitungan milidetik dengan engine neural terbaru.</p></div>
+      <div class="card reveal"><div class="card-icon"><span class="material-symbols-rounded">shield_lock</span></div><h3>Enterprise Security</h3><p>End-to-end encryption dengan standar enterprise-grade untuk semua data.</p></div>
+      <div class="card reveal"><div class="card-icon"><span class="material-symbols-rounded">auto_awesome</span></div><h3>Smart AI Engine</h3><p>Model AI generasi terbaru dengan akurasi tinggi dan pemahaman konteks.</p></div>
+      <div class="card reveal"><div class="card-icon"><span class="material-symbols-rounded">devices</span></div><h3>Cross Platform</h3><p>Optimized untuk Android, iOS, Desktop, dan Tablet dengan UI responsif.</p></div>
+      <div class="card reveal"><div class="card-icon"><span class="material-symbols-rounded">cloud_sync</span></div><h3>Real-time Sync</h3><p>Sinkronisasi cloud realtime antar device tanpa perlu setup manual.</p></div>
+      <div class="card reveal"><div class="card-icon"><span class="material-symbols-rounded">extension</span></div><h3>Modular API</h3><p>Integrasi mudah dengan API modular dan dokumentasi lengkap.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARD -->
+<section id="dashboard">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span> Live Dashboard</span>
+      <h2>Analytics yang <span class="grad-text">Memukau</span></h2>
+      <p class="lead">Pantau performa, traffic, dan AI engine dalam satu dashboard futuristik.</p>
+    </div>
+    <div class="dash reveal">
+      <div class="dash-bar">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="addr">rendom.app / dashboard</span>
+      </div>
+      <div class="dash-body">
+        <div class="dash-metric"><div class="l">Active Users</div><div class="v" data-count="24891">0</div><div class="d">▲ 12.4% this week</div></div>
+        <div class="dash-metric"><div class="l">AI Requests</div><div class="v" data-count="1284" data-suffix="K">0</div><div class="d">▲ 38.1% today</div></div>
+        <div class="dash-metric"><div class="l">Success Rate</div><div class="v" data-count="99" data-suffix=".8%">0</div><div class="d">▲ stable</div></div>
+        <div class="dash-metric"><div class="l">Avg Response</div><div class="v" data-count="48" data-suffix="ms">0</div><div class="d">▼ 12ms faster</div></div>
+        <div class="dash-chart">
+          <div class="ch-head">
+            <div class="t">Traffic Overview · Realtime</div>
+            <div class="legend"><span><i style="background:var(--cyan)"></i>Requests</span><span><i style="background:var(--mint)"></i>Users</span></div>
+          </div>
+          <svg viewBox="0 0 600 160" preserveAspectRatio="none" style="width:100%;height:170px">
+            <defs>
+              <linearGradient id="gA" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#00d9ff" stop-opacity=".5"/><stop offset="1" stop-color="#00d9ff" stop-opacity="0"/></linearGradient>
+              <linearGradient id="gB" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#00ffb3" stop-opacity=".4"/><stop offset="1" stop-color="#00ffb3" stop-opacity="0"/></linearGradient>
+            </defs>
+            <path d="M0,120 C60,90 100,100 150,70 C200,40 240,80 300,60 C360,40 400,100 460,70 C520,40 560,80 600,50 L600,160 L0,160Z" fill="url(#gA)"/>
+            <path d="M0,120 C60,90 100,100 150,70 C200,40 240,80 300,60 C360,40 400,100 460,70 C520,40 560,80 600,50" fill="none" stroke="#00d9ff" stroke-width="2" style="filter:drop-shadow(0 0 6px #00d9ff)"/>
+            <path d="M0,140 C60,130 100,120 150,110 C200,100 240,120 300,100 C360,90 400,120 460,100 C520,90 560,110 600,90 L600,160 L0,160Z" fill="url(#gB)"/>
+            <path d="M0,140 C60,130 100,120 150,110 C200,100 240,120 300,100 C360,90 400,120 460,100 C520,90 560,110 600,90" fill="none" stroke="#00ffb3" stroke-width="2" style="filter:drop-shadow(0 0 6px #00ffb3)"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI TOOLS -->
+<section id="tools">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span> AI Generator Tools</span>
+      <h2>Tools <span class="grad-text">AI Premium</span></h2>
+      <p class="lead">Koleksi tools AI generation untuk segala kebutuhan creator modern.</p>
+    </div>
+    <div class="grid grid-4">
+      <div class="card reveal"><div class="card-icon"><span class="material-symbols-rounded">terminal</span></div><h3>Script Generator</h3><p>Buat script otomatis siap pakai dengan AI.</p></div>
+      <div class="card reveal"><div class="card-icon"><span class="material-symbols-rounded">image</span></div><h3>Image AI</h3><p>Generate visual premium dengan satu prompt.</p></div>
+      <div class="card reveal"><div class="card-icon"><span class="material-symbols-rounded">videocam</span></div><h3>Video AI</h3><p>Render video pendek otomatis untuk konten.</p></div>
+      <div class="card reveal"><div class="card-icon"><span class="material-symbols-rounded">graphic_eq</span></div><h3>Voice AI</h3><p>Suara realistis berbagai bahasa & emosi.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MOBILE SHOWCASE -->
+<section id="mobile">
+  <div class="container">
+    <div class="show-wrap">
+      <div class="reveal">
+        <span class="eyebrow"><span class="dot"></span> Mobile Optimized</span>
+        <h2>Premium di <span class="grad-text">Genggaman</span></h2>
+        <p class="lead">UI mobile-first yang dirancang untuk Android & iOS. Touch interaction smooth, animasi 60fps, dan layout yang menyesuaikan setiap ukuran layar.</p>
+        <div class="hero-cta">
+          <a href="#auto" class="btn btn-primary"><span class="material-symbols-rounded">download</span> Coba Sekarang</a>
+          <a href="#features" class="btn btn-ghost"><span class="material-symbols-rounded">phone_iphone</span> Lihat Fitur</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="ps-head">RENDOM</div>
+            <div class="ps-card"><div class="l">Active</div><div class="v">2,481 users</div></div>
+            <div class="ps-card"><div class="l">Today</div><div class="v">94,210 req</div></div>
+            <div class="ps-card"><div class="l">Uptime</div><div class="v">99.98%</div></div>
+            <div class="ps-card"><div class="l">Latency</div><div class="v">48ms</div></div>
+            <div class="ps-btn">⚡ Generate</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span> Live Statistics</span>
+      <h2>Dipercaya <span class="grad-text">Ribuan Creator</span></h2>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card reveal"><span class="material-symbols-rounded">groups</span><div class="n" data-count="120000" data-suffix="+">0</div><div class="l">Users Online</div></div>
+      <div class="stat-card reveal"><span class="material-symbols-rounded">workspace_premium</span><div class="n" data-count="48000" data-suffix="+">0</div><div class="l">Premium Member</div></div>
+      <div class="stat-card reveal"><span class="material-symbols-rounded">trending_up</span><div class="n" data-count="2400000" data-suffix="">0</div><div class="l">Daily Traffic</div></div>
+      <div class="stat-card reveal"><span class="material-symbols-rounded">speed</span><div class="n" data-count="99" data-suffix="%">0</div><div class="l">Performance</div></div>
+      <div class="stat-card reveal"><span class="material-symbols-rounded">dns</span><div class="n" data-count="99" data-suffix=".9%">0</div><div class="l">Uptime Server</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY + SEO + PERFORMANCE + SECURITY -->
+<section id="pillars">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span> Core Pillars</span>
+      <h2>Empat Pilar <span class="grad-text">Rendom</span></h2>
+    </div>
+    <div class="grid grid-2">
+      <div class="card reveal"><div class="card-icon"><span class="material-symbols-rounded">diversity_3</span></div><h3>Community First</h3><p>Komunitas creator aktif yang saling berbagi tips, tools, dan workflow premium setiap hari.</p></div>
+      <div class="card reveal"><div class="card-icon"><span class="material-symbols-rounded">search</span></div><h3>SEO Optimized</h3><p>Struktur semantic HTML5, schema.org, Open Graph & meta lengkap untuk visibility maksimum.</p></div>
+      <div class="card reveal"><div class="card-icon"><span class="material-symbols-rounded">rocket_launch</span></div><h3>Blazing Performance</h3><p>Lighthouse score 95+, lazy load, image optimization, dan CDN global edge network.</p></div>
+      <div class="card reveal"><div class="card-icon"><span class="material-symbols-rounded">verified_user</span></div><h3>Security First</h3><p>HTTPS enforced, CSP headers, secure tokens, dan audit log untuk setiap aksi sensitif.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span> Testimonials</span>
+      <h2>Kata <span class="grad-text">Creator</span></h2>
+      <p class="lead">Apa kata mereka yang sudah menggunakan Rendom.</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="t-card reveal"><div class="t-head"><div class="t-avatar">A</div><div class="t-user"><div class="n">Arya Pratama</div><div class="u">@aryacreator</div><div class="t-stars">★★★★★</div></div></div><p>"UI nya gila premium banget. Generate script jadi 10x lebih cepet."</p></div>
+      <div class="t-card reveal"><div class="t-head"><div class="t-avatar">N</div><div class="t-user"><div class="n">Nadia Lestari</div><div class="u">@nadiadev</div><div class="t-stars">★★★★★</div></div></div><p>"Dashboard nya futuristik banget. Berasa pake tools dari masa depan."</p></div>
+      <div class="t-card reveal"><div class="t-head"><div class="t-avatar">B</div><div class="t-user"><div class="n">Bayu Saputra</div><div class="u">@bayuxd</div><div class="t-stars">★★★★★</div></div></div><p>"Performa di Android smooth abis. Animasi nya gak ada lag sama sekali."</p></div>
+      <div class="t-card reveal"><div class="t-head"><div class="t-avatar">R</div><div class="t-user"><div class="n">Rina Wijaya</div><div class="u">@rinaai</div><div class="t-stars">★★★★★</div></div></div><p>"Auto-open systemnya membantu workflow harian gua jadi otomatis."</p></div>
+      <div class="t-card reveal"><div class="t-head"><div class="t-avatar">F</div><div class="t-user"><div class="n">Farhan Ali</div><div class="u">@farhantech</div><div class="t-stars">★★★★★</div></div></div><p>"Worth banget jadi premium. Fitur AI nya beneran ngebantu produktivitas."</p></div>
+      <div class="t-card reveal"><div class="t-head"><div class="t-avatar">D</div><div class="t-user"><div class="n">Dita Anggraini</div><div class="u">@ditacreate</div><div class="t-stars">★★★★★</div></div></div><p>"Desainnya clean, neon glow nya juara. Recommended buat semua creator!"</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span> FAQ</span>
+      <h2>Pertanyaan <span class="grad-text">Umum</span></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal"><button class="faq-q">Apa itu Rendom? <span class="material-symbols-rounded">expand_more</span></button><div class="faq-a"><div>Rendom adalah platform AI premium untuk generate script, image, video, dan voice secara otomatis dengan UI futuristik.</div></div></div>
+      <div class="faq-item reveal"><button class="faq-q">Apakah gratis? <span class="material-symbols-rounded">expand_more</span></button><div class="faq-a"><div>Ada versi gratis dengan limit harian dan versi premium dengan akses penuh + prioritas server.</div></div></div>
+      <div class="faq-item reveal"><button class="faq-q">Bagaimana cara kerja Auto-Open? <span class="material-symbols-rounded">expand_more</span></button><div class="faq-a"><div>Aktifkan toggle di section Auto Open System. Setelah 8 detik kami akan redirect otomatis ke Script Generator. Matikan toggle untuk membatalkan.</div></div></div>
+      <div class="faq-item reveal"><button class="faq-q">Apakah data saya aman? <span class="material-symbols-rounded">expand_more</span></button><div class="faq-a"><div>Ya. Semua data dienkripsi end-to-end dengan standar enterprise dan tidak dibagikan ke pihak ketiga.</div></div></div>
+      <div class="faq-item reveal"><button class="faq-q">Apakah mendukung Android? <span class="material-symbols-rounded">expand_more</span></button><div class="faq-a"><div>Sangat mendukung. UI Rendom dioptimasi mobile-first dengan performa smooth di Android & iOS.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL -->
+<section id="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span> Join Community</span>
+      <h2>Connect <span class="grad-text">With Us</span></h2>
+      <p class="lead">Ikuti kami di sosial media untuk update fitur, tips, dan event eksklusif.</p>
+    </div>
+    <div class="socials">
+      <a href="https://tiktok.com/@blackiimut2" target="_blank" rel="noopener" class="soc">
+        <div class="soc-icon"><span class="material-symbols-rounded">music_note</span></div>
+        <div><div class="l">TikTok</div><div class="s">@blackiimut2</div></div>
+      </a>
+      <a href="https://youtube.com/@blacki-2?sub_confirmation=1" target="_blank" rel="noopener" class="soc">
+        <div class="soc-icon"><span class="material-symbols-rounded">smart_display</span></div>
+        <div><div class="l">YouTube</div><div class="s">@blacki-2</div></div>
+      </a>
+      <a href="https://saweria.co/Blacki2" target="_blank" rel="noopener" class="soc">
+        <div class="soc-icon"><span class="material-symbols-rounded">volunteer_activism</span></div>
+        <div><div class="l">Saweria</div><div class="s">Support kami di Saweria</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-col foot-about">
+        <a href="#" class="logo">
+          <div class="logo-mark">R</div>
+          <div class="logo-text">RENDOM</div>
+        </a>
+        <p>Premium AI platform untuk creator modern. Dibuat dengan ❤️ untuk masa depan.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Product</h4>
+        <a href="#features">Features</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#tools">AI Tools</a>
+        <a href="#auto">Auto Open</a>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <a href="#stats">About</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Community</a>
+      </div>
+      <div class="foot-col">
+        <h4>Connect</h4>
+        <a href="https://tiktok.com/@blackiimut2" target="_blank" rel="noopener">TikTok</a>
+        <a href="https://youtube.com/@blacki-2?sub_confirmation=1" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://saweria.co/Blacki2" target="_blank" rel="noopener">Saweria</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>© 2026 RENDOM. All rights reserved.</div>
+      <div>Crafted with neon, glass, and code.</div>
+    </div>
+  </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button class="totop" id="toTop" aria-label="Back to top">
+  <span class="material-symbols-rounded">arrow_upward</span>
+</button>
+
+<script>
+/* ================ LOADER ================ */
+window.addEventListener('load',()=>{
+  setTimeout(()=>document.getElementById('loader').classList.add('hide'),700);
+});
+
+/* ================ NAV SCROLL ================ */
+const nav=document.getElementById('nav'),toTop=document.getElementById('toTop');
+window.addEventListener('scroll',()=>{
+  const y=window.scrollY;
+  nav.classList.toggle('scrolled',y>20);
+  toTop.classList.toggle('show',y>500);
+});
+toTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+/* ================ MOBILE MENU ================ */
+const burger=document.getElementById('burger'),menu=document.getElementById('mobileMenu'),bIcon=document.getElementById('burgerIcon');
+burger.addEventListener('click',()=>{
+  const open=menu.classList.toggle('open');
+  bIcon.textContent=open?'close':'menu';
+});
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');bIcon.textContent='menu'}));
+
+/* ================ RIPPLE ================ */
+document.querySelectorAll('.btn, .soc').forEach(el=>{
+  el.style.position=el.style.position||'relative';
+  el.style.overflow='hidden';
+  el.addEventListener('click',e=>{
+    const r=el.getBoundingClientRect();
+    const s=Math.max(r.width,r.height);
+    const x=(e.clientX||r.left+r.width/2)-r.left-s/2;
+    const y=(e.clientY||r.top+r.height/2)-r.top-s/2;
+    const sp=document.createElement('span');
+    sp.className='ripple';
+    sp.style.width=sp.style.height=s+'px';
+    sp.style.left=x+'px';sp.style.top=y+'px';
+    el.appendChild(sp);
+    setTimeout(()=>sp.remove(),700);
+  });
+});
+
+/* ================ REVEAL ================ */
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ================ COUNTERS ================ */
+const fmt=n=>n>=1000000?(n/1000000).toFixed(1)+'M':n>=1000?(n/1000).toFixed(0)+'K':n;
+const animateCount=(el)=>{
+  const target=+el.dataset.count;const suffix=el.dataset.suffix||'';
+  const dur=1600,start=performance.now();
+  const isBig=target>=1000;
+  const step=t=>{
+    const p=Math.min((t-start)/dur,1);
+    const e=1-Math.pow(1-p,3);
+    const v=Math.floor(target*e);
+    el.textContent=(isBig?fmt(v):v)+suffix;
+    if(p<1)requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+};
+const cio=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){animateCount(e.target);cio.unobserve(e.target)}}),{threshold:.4});
+document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+
+/* ================ FAQ ================ */
+document.querySelectorAll('.faq-item').forEach(item=>{
+  item.querySelector('.faq-q').addEventListener('click',()=>{
+    const open=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!open)item.classList.add('open');
+  });
+});
+
+/* ================ AUTO OPEN SYSTEM ================ */
+const toggle=document.getElementById('autoToggle');
+const dot=document.getElementById('statusDot');
+const stText=document.getElementById('statusText');
+const cdEl=document.getElementById('countdown');
+const aoBar=document.getElementById('aoBar');
+const TARGET='https://script-gemerator.netlify.app';
+const DURATION=8;
+let timer=null,seconds=DURATION;
+
+const reset=()=>{
+  clearInterval(timer);timer=null;seconds=DURATION;
+  cdEl.textContent='--';aoBar.style.width='0%';
+  dot.classList.remove('on');stText.textContent='Status: Nonaktif';
+};
+const tick=()=>{
+  cdEl.textContent=seconds+'s';
+  aoBar.style.width=((DURATION-seconds)/DURATION*100)+'%';
+  if(seconds<=0){
+    clearInterval(timer);
+    stText.textContent='Status: Redirecting...';
+    setTimeout(()=>window.location.href=TARGET,200);
+    return;
+  }
+  seconds--;
+};
+toggle.addEventListener('change',e=>{
+  if(e.target.checked){
+    seconds=DURATION;
+    dot.classList.add('on');stText.textContent='Status: Aktif · Redirect dalam';
+    tick();timer=setInterval(tick,1000);
+  }else{reset()}
+});
+
+/* ================ PARTICLES ================ */
+(function(){
+  const c=document.getElementById('particles');const ctx=c.getContext('2d');
+  let w,h,parts=[];
+  const resize=()=>{w=c.width=innerWidth;h=c.height=innerHeight};
+  resize();addEventListener('resize',resize);
+  const N=Math.min(60,Math.floor(innerWidth/24));
+  for(let i=0;i<N;i++){
+    parts.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.6+.4,
+      vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25,
+      a:Math.random()*.6+.2});
+  }
+  const draw=()=>{
+    ctx.clearRect(0,0,w,h);
+    parts.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0||p.x>w)p.vx*=-1;
+      if(p.y<0||p.y>h)p.vy*=-1;
+      ctx.beginPath();
+      const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*6);
+      g.addColorStop(0,`rgba(0,217,255,${p.a})`);
+      g.addColorStop(1,'rgba(0,217,255,0)');
+      ctx.fillStyle=g;
+      ctx.arc(p.x,p.y,p.r*6,0,Math.PI*2);
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  };
+  draw();
+})();
+
+/* ================ SMOOTH ANCHORS ================ */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const id=a.getAttribute('href');
+    if(id.length>1){
+      const t=document.querySelector(id);
+      if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}
+    }
+  });
+});
+</script>
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"RENDOM",
+  "description":"Premium AI Script Generator Platform 2026",
+  "applicationCategory":"WebApplication"
+}
+</script>
+
+</body>
+</html>
